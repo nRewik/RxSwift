@@ -139,6 +139,9 @@ public class CurrentThreadScheduler : ImmediateSchedulerType {
 
         let scheduledItem = ScheduledItem(action: action, state: state)
         queue.value.enqueue(scheduledItem)
-        return scheduledItem
+      
+        return AnonymousDisposable {
+          scheduledItem.dispose()
+        }
     }
 }

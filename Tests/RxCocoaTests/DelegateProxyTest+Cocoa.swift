@@ -53,7 +53,7 @@ class NSTextFieldSubclass
 
     var test: Observable<Int> {
         return rx_delegate
-            .observe("testEventHappened:")
+            .observe(#selector(TestDelegateProtocol.testEventHappened(_:)))
             .map { a in (a[0] as! NSNumber).integerValue }
     }
 }

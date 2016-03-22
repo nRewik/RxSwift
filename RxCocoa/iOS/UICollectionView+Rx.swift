@@ -135,7 +135,7 @@ extension UICollectionView {
     Reactive wrapper for `delegate` message `collectionView:didSelectItemAtIndexPath:`.
     */
     public var rx_itemSelected: ControlEvent<NSIndexPath> {
-        let source = rx_delegate.observe("collectionView:didSelectItemAtIndexPath:")
+        let source = rx_delegate.observe(#selector(UICollectionViewDelegate.collectionView(_:didSelectItemAtIndexPath:)))
             .map { a in
                 return a[1] as! NSIndexPath
             }
@@ -147,7 +147,7 @@ extension UICollectionView {
      Reactive wrapper for `delegate` message `collectionView:didSelectItemAtIndexPath:`.
      */
     public var rx_itemDeselected: ControlEvent<NSIndexPath> {
-        let source = rx_delegate.observe("collectionView:didDeselectItemAtIndexPath:")
+        let source = rx_delegate.observe(#selector(UICollectionViewDelegate.collectionView(_:didDeselectItemAtIndexPath:)))
             .map { a in
                 return a[1] as! NSIndexPath
         }

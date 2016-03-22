@@ -18,8 +18,8 @@ import RxSwift
 class GestureTarget: RxTarget {
     typealias Callback = (UIGestureRecognizer) -> Void
     
-    let selector = Selector("eventHandler:")
-    
+    let selector = #selector(GestureTarget.eventHandler(_:))
+  
     weak var gestureRecognizer: UIGestureRecognizer?
     var callback: Callback?
     
